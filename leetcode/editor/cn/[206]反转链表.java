@@ -22,11 +22,17 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-p
+
 
 class Solution {
     public ListNode reverseList(ListNode head) {
-
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode last = reverseList(head.next);
+        head.next.next = head;
+        head.next = null;
+        return last;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
