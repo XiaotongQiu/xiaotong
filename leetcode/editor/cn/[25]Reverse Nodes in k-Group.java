@@ -87,13 +87,18 @@ class Solution {
         ListNode l,r;
         l = r = head;
 
+        // 找到前k个的左右端点
         for (int i=0; i < k; i++) {
             if (r == null) {
                 return head;
             }
             r = r.next;
         }
+
+        // 反转前k个值
         ListNode last = reverse(l, r);
+
+        // 递归反转剩下部分
         l.next = reverseKGroup(r, k);
 
         return last;
